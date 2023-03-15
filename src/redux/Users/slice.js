@@ -12,16 +12,13 @@ export const userSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder.addCase(getUserData.pending, (state, action) => {
-      console.log('💩: action', action);
       state.loading = true;
     });
     builder.addCase(getUserData.fulfilled, (state, action) => {
-      console.log('💩: action', action);
       state.loading = false;
       state.data = action?.payload?.data;
     });
     builder.addCase(getUserData.rejected, (state, action) => {
-      console.log('💩: action', action);
       state.loading = false;
       state.error.push(action.error);
     });

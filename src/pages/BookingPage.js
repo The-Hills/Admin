@@ -96,7 +96,7 @@ export default function BookingPage() {
 
   const bookingList = useSelector((state) => state.getBookingReducer.data);
 
-  console.log('booking List =>', bookingList);
+  console.log(bookingList);
 
   useEffect(() => {
     dispatch(getBookingData());
@@ -194,9 +194,8 @@ export default function BookingPage() {
                   onSelectAllClick={handleSelectAllClick}
                 />
                 <TableBody>
-                  {filteredUsers?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                  {filteredUsers?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)?.map((row) => {
                     const { id, kid, driver, distance, fee, startTime, endTime, status } = row;
-                    console.log(driver);
                     const selectedUser = selected.indexOf(fee) !== -1;
 
                     return (
@@ -207,18 +206,18 @@ export default function BookingPage() {
 
                         <TableCell component="th" scope="row" padding="none">
                           <Stack direction="row" alignItems="center" spacing={2}>
-                            <Avatar alt={kid.parent.name} src={kid.parent.avatar} />
+                            <Avatar alt={kid?.parent?.name} src={kid?.parent?.avatar} />
                             <Typography variant="subtitle2" noWrap>
-                              {kid.parent.name}
+                              {kid?.parent?.name}
                             </Typography>
                           </Stack>
                         </TableCell>
 
                         <TableCell align="left">
                           <Stack direction="row" alignItems="center" spacing={2}>
-                            <Avatar alt={kid.name} src={kid.avatar} />
+                            <Avatar alt={kid?.name} src={kid?.avatar} />
                             <Typography variant="subtitle2" noWrap>
-                              {kid.name}
+                              {kid?.name}
                             </Typography>
                           </Stack>
                         </TableCell>

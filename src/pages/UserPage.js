@@ -90,7 +90,7 @@ export default function UserPage() {
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const [currentUser, setCurrentUser] = useState('');
+  const [currentUser, setCurrentUser] = useState(null);
 
   const userList = useSelector((state) => state.getUserReducer.data);
 
@@ -107,7 +107,7 @@ export default function UserPage() {
 
   const handleCloseMenu = () => {
     setOpen(null);
-    setCurrentUser('');
+    setCurrentUser(null);
   };
 
   const handleRequestSort = (event, property) => {
@@ -160,7 +160,6 @@ export default function UserPage() {
 
   const isNotFound = !filteredUsers.length && !!filterName;
 
-  
   return (
     <>
       <Helmet>

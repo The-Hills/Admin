@@ -22,6 +22,7 @@ import {
   TablePagination,
 } from '@mui/material';
 // components
+import { useNavigate } from 'react-router-dom';
 import Iconify from '../components/iconify';
 import Scrollbar from '../components/scrollbar';
 // sections
@@ -76,6 +77,9 @@ function applySortFilter(array, comparator, query) {
 
 const DriverPage = () => {
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   const [open, setOpen] = useState(null);
 
   const [page, setPage] = useState(0);
@@ -90,6 +94,8 @@ const DriverPage = () => {
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
+  const [currentKid, setCurrentKid] = useState(null);
+
   const userList = useSelector((state) => state.getKidReducer.data);
 
   console.log('kid list => ', userList);
@@ -98,12 +104,14 @@ const DriverPage = () => {
     dispatch(getKidData());
   }, [dispatch]);
 
-  const handleOpenMenu = (event) => {
+  const handleOpenMenu = (event, id) => {
     setOpen(event.currentTarget);
+    setCurrentKid(id);
   };
 
   const handleCloseMenu = () => {
     setOpen(null);
+    setCurrentKid(null);
   };
 
   const handleRequestSort = (event, property) => {
@@ -226,7 +234,7 @@ const DriverPage = () => {
                         <TableCell align="left">{parent.phone}</TableCell>
 
                         <TableCell align="right">
-                          <IconButton size="large" color="inherit" onClick={handleOpenMenu}>
+                          <IconButton size="large" color="inherit" onClick={(e) => handleOpenMenu(e, id)}>
                             <Iconify icon={'eva:more-vertical-fill'} />
                           </IconButton>
                         </TableCell>
@@ -297,6 +305,16 @@ const DriverPage = () => {
           },
         }}
       >
+        <MenuItem
+          sx={{ color: 'primary.main' }}
+          onClick={() => {
+            navigate(`/dashboard/kid/${currentKid}`);
+          }}
+        >
+          <Iconify icon={'eva:loader-outline'} sx={{ mr: 2 }} />
+          Detail
+        </MenuItem>
+
         <MenuItem>
           <Iconify icon={'eva:edit-fill'} sx={{ mr: 2 }} />
           Edit

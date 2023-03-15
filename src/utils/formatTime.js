@@ -25,3 +25,30 @@ export function fToNow(date) {
       })
     : '';
 }
+
+export const convertMonthToName = (month) => {
+  const date = new Date();
+  date.setMonth(month - 1);
+
+  return date.toLocaleString('en-US', { month: 'long' });
+};
+
+export const getDayOfMonth = (month, year) => {
+  const date = new Date(year, month, 1);
+
+  date.setDate(date.getDate() - 1);
+
+  return date.getDate();
+};
+
+export const getArrayDayofMonth = (numberOfMonth, month, year) => {
+  const dayOfMonth = [];
+  for (let i = 1; i <= numberOfMonth; i += 1) {
+    if (i < 10) {
+      dayOfMonth.push(`${month}/0${i}/${year}`);
+    } else {
+      dayOfMonth.push(`${month}/${i}/${year}`);
+    }
+  }
+  return dayOfMonth;
+};

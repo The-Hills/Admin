@@ -32,6 +32,11 @@ const navConfig = [
     path: '/dashboard/booking',
     icon: icon('ic_blog'),
   },
+  {
+    title: 'Statistical',
+    path: '/dashboard/statistical',
+    icon: icon('ic_blog'),
+  },
 ];
 
 export default navConfig;

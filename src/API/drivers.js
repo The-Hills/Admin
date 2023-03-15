@@ -7,9 +7,13 @@ const driverAPI = {
   },
 
   updateVeriyDriver: async (id, data) => {
-    console.log('api =>', data);
     const url = `/driver/${id}`;
     return axiosClient.put(url, data);
+  },
+
+  getDriverById: async (id) => {
+    const url = `/driver/${id}`;
+    return axiosClient.get(url);
   },
 };
 

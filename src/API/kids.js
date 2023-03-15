@@ -5,6 +5,10 @@ const kidAPI = {
     const url = '/kid';
     return axiosClient.get(url);
   },
+  getKidById: async (id) => {
+    const url = `/kid/${id}`;
+    return axiosClient.get(url);
+  },
 };
 
 export default kidAPI;

@@ -10,8 +10,10 @@ import DashboardAppPage from './pages/DashboardAppPage';
 import KidPage from './pages/KidPage';
 import DriverPage from './pages/DriverPage';
 import BookingPage from './pages/BookingPage';
-import UserDetail from './pages/UserDetail';
-// import DriverRequestPage from './pages/DriverRequestPage';
+import UserDetailPage from './pages/UserDetailPage';
+import KidDetailPage from './pages/KidDetailPage';
+import DriverDetailPage from './pages/DriverDetailPage';
+import StatisticalPage from './pages/StatisticalPage';
 
 // ----------------------------------------------------------------------
 
@@ -35,12 +37,20 @@ export default function Router() {
         },
         {
           path: 'user/:id',
-          element: <UserDetail />,
+          element: <UserDetailPage />,
         },
         { path: 'kid', element: <KidPage /> },
+        {
+          path: 'kid/:id',
+          element: <KidDetailPage />,
+        },
         { path: 'driver', element: <DriverPage /> },
-        // { path: 'driver_request', element: <DriverRequestPage /> },
+        {
+          path: 'driver/:id',
+          element: <DriverDetailPage />,
+        },
         { path: 'booking', element: <BookingPage /> },
+        { path: 'statistical', element: <StatisticalPage /> },
       ],
     },
     {

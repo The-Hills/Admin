@@ -6,7 +6,7 @@ const userAPI = {
     return axiosClient.get(url);
   },
 
-  getUserId: async (id) => {
+  getUserById: async (id) => {
     const url = `/${id}`;
     return axiosClient.get(url);
   },
